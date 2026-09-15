@@ -6,26 +6,15 @@ This plugin was originally created as a local experiment to determine whether fa
 
 ## Installation
 
-The release includes a ready-to-use `addons.zip`, so no manual file placement or compilation is required.
-
-1. Download `addons.zip` from the **Assets** section.
-2. Extract it directly into your NMRiH installation folder.
-3. Allow the existing `addons` folder to be merged with the one from the archive.
-4. Start NMRiH.
-
-The archive already contains the correct folder structure:
-
-    nmrih/
-    └── addons/
-        └── sourcemod/
-            └── plugins/
-                └── nmrih_fake_survivors.smx
-
-If you prefer to install the plugin manually, copy `nmrih_fake_survivors.smx` to:
+1. Install **Metamod:Source** and **SourceMod** for No More Room in Hell.
+2. Download `nmrih_fake_survivors.smx` from the **Assets** section of this release.
+3. Copy the `.smx` file to:
 
     nmrih/addons/sourcemod/plugins/
 
-The `.sp` source file is also included in the repository for anyone who wants to inspect or modify the plugin.
+4. Start or restart your server.
+
+The source code (`.sp`) is available in the repository if you want to inspect or modify the plugin.
 
 ## Requirements
 
