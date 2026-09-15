@@ -1,31 +1,31 @@
-# NMRiH Fake Survivors
+# NMRiH Fake Survivors v1.0.0
 
-A small SourceMod plugin that creates fake survivor clients in
-[No More Room in Hell](https://store.steampowered.com/app/224260/No_More_Room_in_Hell/).
+A small SourceMod plugin for **No More Room in Hell** that creates fake survivor clients on the server.
 
-The plugin was created to test whether fake clients are counted as
-players for the **"We Got This!"** achievement.
+This plugin was originally created as a local experiment to determine whether fake clients created through SourceMod could be recognized by NMRiH as valid survivors for gameplay and achievement checks. The experiment was successful.
 
-## Why?
+## Installation
 
-"We Got This!" requires:
+The release includes a ready-to-use `addons.zip`, so no manual file placement or compilation is required.
 
-- at least 6 players
-- no casualties
-- no lost safe zones
-- completion of:
-  - Favela
-  - Northway
-  - Flooded
-  - Isolated
-  - NotLD
-  - Ransack
+1. Download `addons.zip` from the **Assets** section.
+2. Extract it directly into your NMRiH installation folder.
+3. Allow the existing `addons` folder to be merged with the one from the archive.
+4. Start NMRiH.
 
-Finding six players for this achievement can be difficult, especially
-for an old game with a relatively small player base.
+The archive already contains the correct folder structure:
 
-This plugin allows a local server to be filled with fake clients,
-leaving one real player.
+    nmrih/
+    └── addons/
+        └── sourcemod/
+            └── plugins/
+                └── nmrih_fake_survivors.smx
+
+If you prefer to install the plugin manually, copy `nmrih_fake_survivors.smx` to:
+
+    nmrih/addons/sourcemod/plugins/
+
+The `.sp` source file is also included in the repository for anyone who wants to inspect or modify the plugin.
 
 ## Requirements
 
@@ -33,48 +33,60 @@ leaving one real player.
 - Metamod:Source
 - SourceMod
 
-Tested with:
+Tested on:
 
 - NMRiH build 1150
 - Metamod:Source 1.12
 - SourceMod 1.12
 
-## Installation
+## Usage
 
-Install Metamod:Source and SourceMod first.
+Start a local/listen server and make sure you have administrator permissions.
 
-Copy:
-
-    nmrih_fake_survivors.smx
-
-to:
-
-    nmrih/addons/sourcemod/plugins/
-
-Then start a local server and run:
+Run the following command from the server console:
 
     sm_fakesurvivors
 
-The plugin creates five fake clients.
+The plugin will create five fake survivor clients:
+
+    Survivor_1
+    Survivor_2
+    Survivor_3
+    Survivor_4
+    Survivor_5
+
+The server console will display the number of successfully created clients.
 
 ## Important
 
-These are **fake clients, not AI survivors**.
+These are **fake clients, not AI-controlled survivors**.
 
-They do not play the map like normal human players.
-The plugin is intended for local/private testing.
+They do not have normal survivor AI and will not automatically:
 
-The method does not directly unlock Steam achievements or modify
-Steam achievement data.
+- navigate the map;
+- follow the player;
+- fight zombies;
+- complete objectives;
+- interact with the environment.
 
-## Source
+The purpose of this plugin is to create additional fake clients that can be used for local server testing and experimentation with NMRiH's player and achievement logic.
 
-The SourcePawn source code is included in this repository:
+## Configuration
 
-    addons/sourcemod/scripting/nmrih_fake_survivors.sp
+The number of fake survivors can be changed in the source code:
+
+    #define MAX_FAKE_SURVIVORS 5
+
+After changing the value, recompile the `.sp` source file with SourceMod's compiler and replace the `.smx` plugin in the `addons/sourcemod/plugins/` directory.
 
 ## Credits
 
-Created by Ghost_Breaker.
+Created by **Ghost_Breaker**.
 
-No More Room in Hell is developed by Lever Games.
+The plugin was developed specifically for experimenting with fake clients and survivor/achievement behavior in No More Room in Hell.
+
+## Disclaimer
+
+This is an unofficial community-made plugin and is not affiliated with the developers of No More Room in Hell, Valve, or Steam.
+
+Use it at your own risk, preferably on local or private servers.
